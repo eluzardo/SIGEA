@@ -9,10 +9,11 @@ app.use(express.static('public'))
 
 //Lectura y parse de body
 app.use (express.json())
+app.use (express.urlencoded({extended:false})) // acepta datos que vengan de un formulario html
 
 //Rutas
-app.use('/api', require('./routes/materia.routes'));
-
+app.use('/api/materias', require('./routes/materia.routes'));
+app.use('/api/carreras', require('./routes/carrera.routes'));
 
 
 

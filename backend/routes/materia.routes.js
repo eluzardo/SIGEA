@@ -1,7 +1,13 @@
 const {Router} = require('express')
 const router= Router();
-const {agregarMateria} = require('../controllers/materia.controller')
+const {agregarMateria, mostrarMateria, modificarMateria, eliminarMateria } = require('../controllers/materia.controller')
 
-router.get('/agregar-materias', agregarMateria)
+router.post('/agregar-materias', agregarMateria)
+
+router.get('/mostrar-materias', mostrarMateria)
+
+router.post('/modificar-materias/:id', modificarMateria)
+
+router.post('/eliminar-materias/:id', eliminarMateria)
 
 module.exports= router;

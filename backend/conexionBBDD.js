@@ -22,7 +22,6 @@ const sqlConfig = {
 const conexionSQL = async function conectar() {
     try {
         const conexion = await sql.connect(sqlConfig)
-        console.log('Conexion OKa')
         return conexion
     } catch (e) {
         console.log(e)
