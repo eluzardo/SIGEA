@@ -1,7 +1,5 @@
-export default function Carreras() {
-  return (
-    <div>
-      <h1>Carreras</h1>
-    </div>
-  );
+import { FormCarrera } from '../components/FormCarrera';
+
+export default function Error404() {
+  return <FormCarrera />;
 }

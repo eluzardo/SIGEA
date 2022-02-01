@@ -1,13 +1,18 @@
-const {Router} = require('express')
-const router= Router();
-const {agregarPlanEstudio, mostrarPlanEstudio, modificarPlanEstudio, eliminarPlanEstudio } = require('../controllers/')
+const { Router } = require('express');
+const router = Router();
+const {
+  agregarPlanEstudio,
+  mostrarPlanEstudio,
+  modificarPlanEstudio,
+  eliminarPlanEstudio,
+} = require('../controllers/PlanEstudio.controller');
 
-router.post('/agregar-carreras', agregarPlanEstudio)
+router.post('/agregar-plan-estudio', agregarPlanEstudio);
 
-router.get('/mostrar-carreras', mostrarPlanEstudio)
+router.get('/mostrar-plan-estudio', mostrarPlanEstudio);
 
-router.post('/modificar-carreras/:id', modificarPlanEstudio)
+router.post('/modificar-plan-estudio/:id', modificarPlanEstudio);
 
-router.post('/eliminar-carreras/:id', eliminarPlanEstudio)
+router.post('/eliminar-plan-estudio/:id', eliminarPlanEstudio);
 
-module.exports= router;
+module.exports = router;
