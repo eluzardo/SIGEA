@@ -1,9 +1,12 @@
+import Carreras from './pages/Carreras';
+import CrudApp from './pages/CrudApp';
 import Approuter from './routers/Approuter';
 
 function App() {
   return (
     <div>
-      <Approuter />
+      {/*<Carreras />*/}
+      <Carreras />
     </div>
   );
 }

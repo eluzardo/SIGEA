@@ -57,7 +57,7 @@ const eliminarCarrera = async (req, res) => {
     .input('id', sql.Int, id)
     .query('delete from carreraTMP where id= @id');
   conexion.close();
-  res.json(ps.recordset);
+  res.status(200).json({ msg: 'se elimino la carrera' });
 };
 
 module.exports = {

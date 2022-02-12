@@ -5,7 +5,6 @@ import Materias from '../pages/Materias';
 import PlanesEstudio from '../pages/PlanesEstudio';
 import Error404 from '../pages/Error404';
 import Carreras from '../pages/Carreras';
-import Layout from '../components/layouts/Layout';
 
 export default function Approuter() {
   return (

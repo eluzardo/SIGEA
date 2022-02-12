@@ -1,43 +1,70 @@
-import { useState } from 'react';
+import { React, useState, useEffect } from 'react';
+//import TablaCarreras from '../components/TablaCarreras';
 
-export const FormCarrera = () => {
-  const initialState = {
-    nombreCarrera: '',
-    codigoCarrera: '',
-  };
+const initialState = {
+  id: null,
+  nombre: '',
+  codigo: '',
+};
 
+const FormCarrera = ({
+  insertCarrera,
+  updateCarrera,
+  setDataToEdit,
+  dataToEdit,
+}) => {
   const [form, setForm] = useState(initialState);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  useEffect(() => {
+    if (dataToEdit) {
+      setForm(dataToEdit);
+    } else {
+      setForm(initialState);
+    }
+  }, [dataToEdit]);
 
+  const handleChange = (e) => {
     setForm({
       ...form,
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
   };
 
-  let fetchOptions = {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      nombre: form.nombreCarrera,
-      codigo: form.codigoCarrera,
-    }),
-  };
+  //let fetchOptions = {
+  //  method: 'POST',
+  //  headers: {
+  //    'Content-type': 'application/json',
+  //  },
+  //  body: JSON.stringify({
+  //    nombre: form.nombreCarrera,
+  //    codigo: form.codigoCarrera,
+  //  }),
+  //};
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      fetch(
-        'http://localhost:5000/api/carreras/agregar-carreras',
-        fetchOptions
-      ).then((res) => res.json().then((res) => console.log(res)));
-    } catch (error) {
-      console.log(error);
-    }
+
+    // if (form.id === null) {
+    //   insertCarrera(form);
+    // } else {
+    //   updateCarrera(form);
+    // }
+
+    //try {
+    //  fetch(
+    //    'http://localhost:5000/api/carreras/agregar-carreras',
+    //    fetchOptions
+    //  ).then((res) => res.json().then((res) => console.log(res)));
+    //} catch (error) {
+    //  console.log(error);
+    //}
+
+    handleReset();
+  };
+
+  const handleReset = () => {
+    setForm(initialState);
+    setDataToEdit(null);
   };
 
   return (
@@ -53,10 +80,10 @@ export const FormCarrera = () => {
             <input
               type="text"
               className="form-control"
-              name="nombreCarrera"
+              name="nombre"
               placeholder="name@example.com"
               onChange={handleChange}
-              value={form.nombreCarrera}
+              value={form.nombre}
             />
           </div>
         </div>
@@ -70,10 +97,10 @@ export const FormCarrera = () => {
             <input
               type="text"
               className="form-control"
-              name="codigoCarrera"
+              name="codigo"
               placeholder="Ej.: K"
               onChange={handleChange}
-              value={form.codigoCarrera}
+              value={form.codigo}
             />
           </div>
         </div>
@@ -81,8 +108,11 @@ export const FormCarrera = () => {
           <button type="submit" className="btn btn-primary mb-3">
             Agregar carrera
           </button>
+          <input type="reset" value="Limpiar" onClick={handleReset} />
         </div>
       </div>
     </form>
   );
 };
+
+export default FormCarrera;
