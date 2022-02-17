@@ -1,0 +1,10 @@
+use sigea;
+
+create table carreraTMP (
+	id int primary key auto_increment,
+    nombre varchar (50),
+    codigo varchar (10)d
+)
+
+
+select * from carreraTMP
